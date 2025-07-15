@@ -232,8 +232,24 @@ Let's start by looking at the total FLOPs and comms.
 
 {% details Click here for the answer. %}
 
-From the spec sheet, we see that the reported bfloat16 FLOPs value is `1.979e15` FLOPs/s with an asterisk noting "with sparsity". The true value is half this without sparsity, meaning close to `1e15` FLOPs/s. The memory bandwidth is 3.35TB/s, or `3.35e12` bytes / second. Thus $B_\text{crit}$ is `1e15 / 3.35e12 = 298`, rather similar to the TPU.
+From the spec sheet, we see that the reported bfloat16 FLOPs value is `1.979e15` FLOPs/s with an asterisk noting "with sparsity". The true value is half this without sparsity, meaning close to `1e15` FLOPs/s. The memory bandwidth is 3.35TB/s, or `3.35e12` bytes / second.  Thus
+$$\begin{equation}
+\text{Intensity}(\text{Accelerator})
+=
+\frac{\text{Accelerator FLOPs/sec}}{\text{Bandwidth Bytes/sec}}
+=
+\frac{1e15}{3.35e12}
+=
+298
+\end{equation}$$
 
+Recall that for `bf16`, $\text{Intensity}(\text{Arithmetic})=B$. We are compute bound when
+$$\begin{align*}
+\text{Intensity}(\text{Arithmetic}) \geq \text{Intensity}(\text{Accelerator})
+\\
+B \geq 298
+\end{align*}$$
+Therefore $B_\text{crit} = 298$.
 {% enddetails %}
 
 <h3 markdown=1 class="next-section">That's it for Part 1! For Part 2, looking at how real TPUs handle FLOPs and communication, [click here](../tpus).</h3>
