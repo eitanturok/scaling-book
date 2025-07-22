@@ -346,7 +346,7 @@ where $$\sum_i \lvert X_i \rvert / 2$$ is the length of the longest path in the 
 
 {% enddetails %}
 
-<b markdown=1 style="color:rgb(144, 92, 255);">Pop Quiz 2 [AllGather time]:</b> Using the numbers from [Part 2](../tpus), how long does it take to perform the AllGather<sub>Y</sub>([E<sub>Y</sub>, F]) → [E, F] on a TPUv5e with a 2D mesh `{'X': 8, 'Y': 4}`, $$E = 2048$$, $$F = 8192$$ in bfloat16? What about with $$E=256, F=256$$?
+<b markdown=1 style="color:rgb(144, 92, 255);">Pop Quiz 2 [AllGather time]:</b> Using the numbers from [Part 2](../tpus), how long does it take to perform the unidirectional AllGather<sub>Y</sub>([E<sub>Y</sub>, F]) → [E, F] on a TPUv5e with a 2D mesh `{'X': 8, 'Y': 4}`, $$E = 2048$$, $$F = 8192$$ in bfloat16? What about with $$E=256, F=256$$?
 
 {% details Click here for the answer. %}
 
